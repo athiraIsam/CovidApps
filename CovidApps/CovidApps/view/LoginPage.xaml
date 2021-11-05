@@ -1,0 +1,33 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="CovidApps.view.LoginPage">
+    <ContentPage.Content>
+        <StackLayout Orientation="Vertical" Padding="30" Spacing="30">
+            <BoxView HeightRequest="100"/>
+
+            <Frame BackgroundColor="AliceBlue" HasShadow="True" >
+                <StackLayout Orientation="Vertical" Spacing="30">
+                    <Entry x:Name="userName" Placeholder="Username"    
+                           PlaceholderColor="Gray" HeightRequest="40"   
+                           Keyboard="Email"  
+                           TextColor="Black"/>
+                </StackLayout>
+            </Frame>
+
+            <Frame BackgroundColor="AliceBlue" HasShadow="True" >
+                <StackLayout Orientation="Vertical" Spacing="5">
+                    <Label Text="Select your date of birth" TextColor="Black"/>
+                    <DatePicker Margin="10" x:Name="dateOfBirth" TextColor="Black" />
+                </StackLayout>
+            </Frame>
+
+            <Button Command="{Binding SubmitCommand}" Text="Login" TextColor="White"  
+                    FontAttributes="None" FontSize="Large" HorizontalOptions="FillAndExpand"  
+                    BackgroundColor="Blue" Clicked="OnLoginCLicked" />
+            <Label Text="Error Description" HorizontalTextAlignment="Center" TextColor="Red" FontAttributes="Italic" 
+                   IsVisible="False" x:Name="loginError"></Label>
+
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

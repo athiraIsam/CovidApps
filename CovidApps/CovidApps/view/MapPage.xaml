@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="CovidApps.view.MapPage" Title="Map">
+    <ContentPage.Content>
+        <StackLayout>
+            <StackLayout Orientation="Horizontal" HorizontalOptions="Center" Margin="10">
+                <Label Text="Current Location: " FontFamily="Bold" FontSize="20" />
+                <Label x:Name="mapCountryName" FontSize="20" />
+            </StackLayout>
+            <StackLayout Orientation="Horizontal">
+                <Label Text="Address: "/>
+                <Label x:Name="mapAddress"/>
+            </StackLayout>
+            <StackLayout Orientation="Horizontal">
+                <Label Text="Latitude: "/>
+                <Label x:Name="mapLatitude"/>
+            </StackLayout>
+            <StackLayout Orientation="Horizontal">
+                <Label Text="Longitude: "/>
+                <Label x:Name="mapLongitude"/>
+            </StackLayout>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

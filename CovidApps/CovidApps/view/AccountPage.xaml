@@ -1,0 +1,28 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="CovidApps.view.AccountPage" Title="Account">
+    <ContentPage.Content>
+        <StackLayout Spacing="20">
+            <Label Text="My Profile" FontAttributes="Bold" HorizontalTextAlignment="Center" Margin="10" FontSize="30"/>
+            <StackLayout Orientation="Horizontal">
+                <Label Text="Username:" FontAttributes="Bold" FontSize="20"/>
+                <Label x:Name="userName" FontSize="20"/>
+            </StackLayout>
+            <StackLayout Orientation="Horizontal">
+                <Label Text="Date of Birth:" FontAttributes="Bold" FontSize="20"/>
+                <Label x:Name="dateBirth" FontSize="20" />
+            </StackLayout >
+            <StackLayout Orientation="Horizontal" HorizontalOptions="Center" Spacing="50">
+                <ImageButton Source="edit.png" WidthRequest="40" HeightRequest="40" Clicked="editImage_Clicked" BackgroundColor="White"/>
+                <DatePicker  x:Name="newDate" TextColor="Black" IsVisible="false" HeightRequest="1" WidthRequest="1" Margin="0" 
+                            HorizontalOptions="Center"/>
+                <Button Text="Save"  WidthRequest="100" HeightRequest="40" Clicked="OnSave_Clicked" FontSize="15" />
+            </StackLayout>
+            <StackLayout HorizontalOptions="End">
+                <ImageButton Source="delete.png" WidthRequest="50" HeightRequest="50"  Clicked="deleteImage_Clicked" BackgroundColor="White"/>
+                <Label Text="Delete Account?"></Label>
+            </StackLayout>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
