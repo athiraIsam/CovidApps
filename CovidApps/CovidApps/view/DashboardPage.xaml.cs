@@ -28,15 +28,23 @@ namespace CovidApps.view
             Children.Add(new AccountPage());
         }
 
-        public void OnGetRecordSuccess(List<JsonCovidRecord> covidRecords)
+        public void OnFailure(string error)
         {
             loading.IsVisible = false;
+            DisplayAlert("Warning", error,"OK");
+
+        }
+
+        public void OnGetRecordSuccess(List<JsonCovidRecord> covidRecords)
+        {
+           
             if (covidRecords == null) 
                 return; 
             if (covidRecords.Count == 0)
                 return;
             MainListView.ItemsSource = covidRecords; 
             countryName.Text = "List of Past week Covid-19 Case in: " + covidRecords[0].country;
+            loading.IsVisible = false;
         }
     }
 }

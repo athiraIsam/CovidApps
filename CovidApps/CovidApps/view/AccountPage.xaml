@@ -1,27 +1,35 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="CovidApps.view.AccountPage" Title="Account">
+             x:Class="CovidApps.view.AccountPage" Title="Account" BackgroundColor="#202124">
     <ContentPage.Content>
         <StackLayout Spacing="20">
-            <Label Text="My Profile" FontAttributes="Bold" HorizontalTextAlignment="Center" Margin="10" FontSize="30"/>
-            <StackLayout Orientation="Horizontal">
-                <Label Text="Username:" FontAttributes="Bold" FontSize="20"/>
-                <Label x:Name="userName" FontSize="20"/>
-            </StackLayout>
-            <StackLayout Orientation="Horizontal">
-                <Label Text="Date of Birth:" FontAttributes="Bold" FontSize="20"/>
-                <Label x:Name="dateBirth" FontSize="20" />
-            </StackLayout >
+            <Label Text="My Profile" FontAttributes="Bold" HorizontalTextAlignment="Center" Margin="10" FontSize="30" TextColor="AliceBlue"/>
+            <Frame BackgroundColor="#303134" HasShadow="True"  BorderColor="#2196f3" CornerRadius="10" Margin="10" >
+                <StackLayout Orientation="Vertical">
+                    <StackLayout Orientation="Horizontal" Spacing="20" >
+                        <Label Text="Username:" FontAttributes="Bold" FontSize="20" TextColor="AliceBlue"/>
+                        <Label x:Name="userName" FontSize="20" TextColor="AliceBlue"/>
+                    </StackLayout>
+                    <StackLayout Orientation="Horizontal"  Spacing="20">
+                        <Label Text="Date of Birth:" FontAttributes="Bold" FontSize="20" TextColor="AliceBlue"/>
+                        <Label x:Name="dateBirth" FontSize="20" TextColor="AliceBlue"/>
+                    </StackLayout >
+                </StackLayout>
+            </Frame>
+             
             <StackLayout Orientation="Horizontal" HorizontalOptions="Center" Spacing="50">
-                <ImageButton Source="edit.png" WidthRequest="40" HeightRequest="40" Clicked="editImage_Clicked" BackgroundColor="White"/>
+                <ImageButton Source="edit.png" WidthRequest="60" HeightRequest="60" Clicked="editImage_Clicked" BackgroundColor="#2196f3" CornerRadius="10"
+                             BorderColor="White" BorderWidth="1"/>
                 <DatePicker  x:Name="newDate" TextColor="Black" IsVisible="false" HeightRequest="1" WidthRequest="1" Margin="0" 
                             HorizontalOptions="Center"/>
-                <Button Text="Save"  WidthRequest="100" HeightRequest="40" Clicked="OnSave_Clicked" FontSize="15" />
+                <Button Text="Save"  WidthRequest="100" HeightRequest="40" Clicked="OnSave_Clicked" FontSize="20" BackgroundColor="#2196f3" CornerRadius="10"
+                        BorderColor="White" BorderWidth="1" />
             </StackLayout>
-            <StackLayout HorizontalOptions="End">
-                <ImageButton Source="delete.png" WidthRequest="50" HeightRequest="50"  Clicked="deleteImage_Clicked" BackgroundColor="White"/>
-                <Label Text="Delete Account?"></Label>
+            <StackLayout HorizontalOptions="End" Padding="0,100,10,0">
+                <ImageButton Source="delete.png" WidthRequest="50" HeightRequest="50"  Clicked="deleteImage_Clicked" BackgroundColor="#2196f3" CornerRadius="10"
+                        BorderColor="White" BorderWidth="1"/>
+                <Label Text="Delete Account?" TextColor="White"></Label>
             </StackLayout>
         </StackLayout>
     </ContentPage.Content>

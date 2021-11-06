@@ -24,6 +24,11 @@ namespace CovidApps.view
             this.presenter.getCurrentLocation();
         }
 
+        public void OnFailure(string error)
+        {
+            //
+        }
+
         public void onGetCurrentLocationSuccess(LocationInfo locationInfo)
         {
             if(locationInfo!=null)

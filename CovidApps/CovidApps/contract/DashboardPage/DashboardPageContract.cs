@@ -9,6 +9,7 @@ namespace CovidApps.contract.DashboardPage
     public interface IView
     {
         void OnGetRecordSuccess(List<JsonCovidRecord> covidRecords);
+        void OnFailure(string error);
     }
     public interface IModel
     {
@@ -22,5 +23,6 @@ namespace CovidApps.contract.DashboardPage
     public interface IOnListerner
     {
         void OnGetRecordSuccess(List<JsonCovidRecord> covidRecords);
+        void OnFailure(string error);
     }
 }

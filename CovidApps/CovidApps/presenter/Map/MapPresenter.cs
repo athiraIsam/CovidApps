@@ -21,6 +21,12 @@ namespace CovidApps.presenter.Map
                 this.mainModel.getCurrentLocation(this);
         }
 
+        public void OnFailure(string error)
+        {
+            if (this.mainView != null)
+                this.mainView.OnFailure(error);
+        }
+
         public void onGetCurrentLocationSuccess(LocationInfo locationInfo)
         {
             if (this.mainView != null) 

@@ -23,25 +23,26 @@ namespace CovidApps.model.Map
             {
                 countryName = "Malaysia"
             };
-            /*
-           try  
-          { 
-              var location = await Geolocation.GetLastKnownLocationAsync();
+            
+            try  
+               { 
+                 var location = await Geolocation.GetLastKnownLocationAsync();
 
-              if (location == null)
-              {
+                 if (location == null)
+                 {
+                  listerner.OnFailure("Unable to get location.Please turn on the location");
                   return;              
-              }                                 
+                 }                                 
 
-              this.listerner.onGetCurrentLocationSuccess(locationInfo);      
-          }
+                 this.listerner.onGetCurrentLocationSuccess(locationInfo);      
+             }
 
-          catch (FeatureNotSupportedException fnsEx)         
-          {                
-              // Handle not supported on device exception
-          }
-            */
-            this.listerner.onGetCurrentLocationSuccess(locationInfo);
+              catch (FeatureNotSupportedException fnsEx)         
+              {                
+                  // Handle not supported on device exception
+              }
+     
+            
         }
     }
 }

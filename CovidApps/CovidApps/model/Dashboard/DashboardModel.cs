@@ -35,6 +35,11 @@ namespace CovidApps.model.Dashboard
             try
             {
                 var location = await Geolocation.GetLastKnownLocationAsync();
+                if(location==null)
+                {
+                    onListerner.OnFailure("Unable to get location. Please turn on the location");
+                    return;
+                }
                 getCountryFromCoordinates(location);
 
             }
@@ -65,7 +70,8 @@ namespace CovidApps.model.Dashboard
 
                 if (response == null)
                 {
-                    // return; 
+                    onListerner.OnFailure("Error while fecthing the information");
+                     return; 
                 }
 
                 // Todo- Implement real value. for now unable to get respond. dont know why
@@ -78,7 +84,7 @@ namespace CovidApps.model.Dashboard
             }
             catch (Exception e)
             {
-                Console.WriteLine("Error:" + e.InnerException.Message);
+                onListerner.OnFailure(e.Message);
             }
         }
         private async void getCovidRecord(LocationInfo locationInfo)
@@ -104,9 +110,19 @@ namespace CovidApps.model.Dashboard
                 var restAdapter = RestService.For<CovidAPIServices>(httpClient);
                 
                 var response = await restAdapter.GetCovidRecord(locationInfo.countryName, previousWeekStart, previousWeekEnd);
+                
+                if(response==null)
+                {
+                    onListerner.OnFailure("Error while fecthing the information");
+                    return;
+                }
                 onListerner.OnGetRecordSuccess(response);
             }
-            catch (Exception e) { Console.WriteLine("Error:" + e.InnerException.Message); }
+            catch (Exception e) 
+            { 
+                onListerner.OnFailure("Error while fecthing the information"); 
+                Console.WriteLine("Error:" + e.InnerException.Message); 
+            }
         }
     }
 

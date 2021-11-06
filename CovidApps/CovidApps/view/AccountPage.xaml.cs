@@ -32,7 +32,7 @@ namespace CovidApps.view
 
         public void OnFailure(string error)
         {
-            throw new NotImplementedException();
+            DisplayAlert("Warning", error, "OK");
         }
 
         public void OnGetIdSucess(LoginInfo loginInfo)
@@ -43,13 +43,16 @@ namespace CovidApps.view
 
         public void OnUpdateIdSuccess()
         {
+            DisplayAlert("Update","Success", "OK");
             dateBirth.Text = newDate.Date.ToShortDateString();
 
         }
 
-        private void deleteImage_Clicked(object sender, EventArgs e) 
+        private async void deleteImage_Clicked(object sender, EventArgs e) 
         {
-            this.accountPresenter.deleteId(); 
+            bool answer = await DisplayAlert("Warning!", "Would you like to delete your account?", "Yes", "No");
+            if(answer)
+                this.accountPresenter.deleteId(); 
         }
 
         void Date_DateSelected(object sender, DateChangedEventArgs e)
@@ -62,17 +65,21 @@ namespace CovidApps.view
             newDate.Focus(); 
             newDate.DateSelected += Date_DateSelected;
         }
-        private void OnSave_Clicked(object sender, EventArgs e)
-        { 
-            LoginData login = new LoginData() 
-            { 
-                name = userName.Text, 
-                firstTimeFlag = true,
-                dateOfBirth = dateBirth.Text,
-                Id = 1, 
-            };
+        private async void OnSave_Clicked(object sender, EventArgs e)
+        {
+            bool answer = await DisplayAlert("Warning!", "Would you like to save your changes?", "Yes", "No");
+            if (answer)
+            {
+                LoginData login = new LoginData()
+                {
+                    name = userName.Text,
+                    firstTimeFlag = true,
+                    dateOfBirth = dateBirth.Text,
+                    Id = 1,
+                };
 
-            this.accountPresenter.updateId(login);
+                this.accountPresenter.updateId(login);
+            }
         }
     }
 }

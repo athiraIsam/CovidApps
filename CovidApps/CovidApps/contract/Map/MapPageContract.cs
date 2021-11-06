@@ -8,6 +8,7 @@ namespace CovidApps.contract.Map
     public interface IView
     {
         void onGetCurrentLocationSuccess(LocationInfo locationInfo);
+        void OnFailure(string error);
     }
     public interface IModel
     {
@@ -20,6 +21,7 @@ namespace CovidApps.contract.Map
     }
     public interface IOnListerner
     {
-        void onGetCurrentLocationSuccess(LocationInfo locationInfo);
+       void onGetCurrentLocationSuccess(LocationInfo locationInfo);
+         void OnFailure(string error);
     }
 }

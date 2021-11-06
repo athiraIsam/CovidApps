@@ -1,40 +1,40 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <TabbedPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="CovidApps.view.DashboardPage">
+             x:Class="CovidApps.view.DashboardPage" BackgroundColor="#202124">
   <!--Pages can be added as references or inline-->
     <ContentPage Title=" Dashboard">
         <StackLayout >
-            <Label FontAttributes="Bold" x:Name="countryName" Margin="10" HorizontalTextAlignment="Center" FontSize="20"/>
+            <Label FontAttributes="Bold" x:Name="countryName" Margin="10" HorizontalTextAlignment="Center" FontSize="20" TextColor="AliceBlue"/>
             <StackLayout Orientation="Vertical" x:Name="loading" >
                 <Label Text="Loading..." HorizontalTextAlignment="Center" ></Label>
                 <ActivityIndicator IsRunning="True" />
             </StackLayout>
-            <ListView x:Name="MainListView"  HasUnevenRows="True"  >
+            <ListView x:Name="MainListView"  HasUnevenRows="True">
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <ViewCell>
                             <Grid>
-                                <StackLayout VerticalOptions="FillAndExpand" Spacing="5" Grid.Column="0" Margin="10" >
-                                    <StackLayout Orientation="Horizontal" >
-                                        <Label Text="Date: " FontAttributes="Bold"/>
-                                        <Label Text= "{Binding date,StringFormat='{0:d}'}"/>
+                                <StackLayout VerticalOptions="FillAndExpand" Spacing="5" Grid.Column="0" Margin="20" BackgroundColor="#303134">
+                                    <StackLayout Orientation="Horizontal" HorizontalOptions="Center" Spacing="10" Margin="10">
+                                        <Label Text="Date: " FontAttributes="Bold"  TextColor="AliceBlue" FontSize="20"/>
+                                        <Label Text= "{Binding date,StringFormat='{0:d}'}"  TextColor="AliceBlue"  FontSize="20"/>
                                     </StackLayout>
-                                    <StackLayout Orientation="Horizontal">
-                                        <Label Text="Confirmed Case: " FontAttributes="Bold"/>
-                                        <Label Text= "{Binding confirmed}"/>
+                                    <StackLayout Orientation="Horizontal" Padding="10,0,0,0">
+                                        <Label Text="Confirmed Case: " FontAttributes="Bold"  TextColor="AliceBlue"/>
+                                        <Label Text= "{Binding confirmed}"  TextColor="AliceBlue"/>
                                     </StackLayout>
-                                    <StackLayout Orientation="Horizontal">
-                                        <Label Text="Deaths: " FontAttributes="Bold" />
-                                        <Label Text= "{Binding deaths}"/>
+                                    <StackLayout Orientation="Horizontal" Padding="10,0,0,0">
+                                        <Label Text="Deaths: " FontAttributes="Bold"  TextColor="AliceBlue" />
+                                        <Label Text= "{Binding deaths}"  TextColor="AliceBlue"/>
                                     </StackLayout>
-                                    <StackLayout Orientation="Horizontal">
-                                        <Label Text="Recovered: " FontAttributes="Bold"/>
-                                        <Label Text= "{Binding recovered}"/>
+                                    <StackLayout Orientation="Horizontal" Padding="10,0,0,0">
+                                        <Label Text="Recovered: " FontAttributes="Bold"  TextColor="AliceBlue"/>
+                                        <Label Text= "{Binding recovered}" TextColor="AliceBlue"/>
                                     </StackLayout>
-                                    <StackLayout Orientation="Horizontal">
-                                        <Label Text="Active Case: " FontAttributes="Bold"/>
-                                        <Label Text= "{Binding active}"/>
+                                    <StackLayout Orientation="Horizontal" Padding="10,0,0,10">
+                                        <Label Text="Active Case: " FontAttributes="Bold"  TextColor="AliceBlue"/>
+                                        <Label Text= "{Binding active}"  TextColor="AliceBlue"/>
                                     </StackLayout>
                                 </StackLayout>
                             </Grid>

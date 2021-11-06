@@ -1,30 +1,32 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="CovidApps.view.LoginPage">
+             x:Class="CovidApps.view.LoginPage" Title="Login" BackgroundColor="#202124">
     <ContentPage.Content>
-        <StackLayout Orientation="Vertical" Padding="30" Spacing="30">
-            <BoxView HeightRequest="100"/>
-
-            <Frame BackgroundColor="AliceBlue" HasShadow="True" >
-                <StackLayout Orientation="Vertical" Spacing="30">
-                    <Entry x:Name="userName" Placeholder="Username"    
+        <StackLayout Orientation="Vertical" Padding="30" Spacing="15" >
+            <Image Source="profile.png" HeightRequest="100" WidthRequest="100" BackgroundColor="AliceBlue" Margin="10"></Image>
+          
+            <Frame BackgroundColor="AliceBlue" HasShadow="True"  BorderColor="#2196f3" CornerRadius="10" >
+                <StackLayout Orientation="Vertical" Spacing="5">
+                    <Label Text="Username:" TextColor="Black" FontSize="15"></Label>
+                    <Entry x:Name="userName" Placeholder="Enter Here" FontAttributes="Italic"    
                            PlaceholderColor="Gray" HeightRequest="40"   
                            Keyboard="Email"  
                            TextColor="Black"/>
                 </StackLayout>
             </Frame>
 
-            <Frame BackgroundColor="AliceBlue" HasShadow="True" >
+            <Frame BackgroundColor="AliceBlue" HasShadow="True" BorderColor="#2196f3" CornerRadius="10">
                 <StackLayout Orientation="Vertical" Spacing="5">
                     <Label Text="Select your date of birth" TextColor="Black"/>
-                    <DatePicker Margin="10" x:Name="dateOfBirth" TextColor="Black" />
+                    <DatePicker Margin="0" x:Name="dateOfBirth" TextColor="Black" />
                 </StackLayout>
             </Frame>
 
             <Button Command="{Binding SubmitCommand}" Text="Login" TextColor="White"  
-                    FontAttributes="None" FontSize="Large" HorizontalOptions="FillAndExpand"  
-                    BackgroundColor="Blue" Clicked="OnLoginCLicked" />
+                    FontAttributes="None" FontSize="Large" HorizontalOptions="Fill"  
+                    BackgroundColor="#2196f3" Clicked="OnLoginCLicked" CornerRadius="10" />
+            
             <Label Text="Error Description" HorizontalTextAlignment="Center" TextColor="Red" FontAttributes="Italic" 
                    IsVisible="False" x:Name="loginError"></Label>
 

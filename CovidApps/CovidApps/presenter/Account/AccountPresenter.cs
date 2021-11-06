@@ -39,7 +39,8 @@ namespace CovidApps.presenter.Account
 
         public void OnFailure(string error)
         {
-            throw new NotImplementedException();
+            if (this.mainView != null)
+                this.mainView.OnFailure(error);
         }
 
         public void OnGetIdSucess(LoginInfo login)

@@ -23,6 +23,12 @@ namespace CovidApps.presenter.Dashboard
                 this.mainModel.getCovidRecord(this);
         }
 
+        public void OnFailure(string error)
+        {
+            if (this.mainView != null)
+                this.mainView.OnFailure(error);
+        }
+
         public void OnGetRecordSuccess(List<JsonCovidRecord> covidRecords)
         {
             if (this.mainView != null) 
