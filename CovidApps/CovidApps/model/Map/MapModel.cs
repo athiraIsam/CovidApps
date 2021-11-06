@@ -1,7 +1,10 @@
-﻿using CovidApps.contract;
+﻿using CovidApps.api.openstreetmap;
+using CovidApps.contract;
 using CovidApps.contract.Map;
+using Refit;
 using System;
 using System.Collections.Generic;
+using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
 using Xamarin.Essentials;
@@ -19,11 +22,7 @@ namespace CovidApps.model.Map
 
         private async void getCurrentLocation()
         {
-            LocationInfo locationInfo = new LocationInfo()
-            {
-                countryName = "Malaysia"
-            };
-            
+          
             try  
                { 
                  var location = await Geolocation.GetLastKnownLocationAsync();
@@ -32,9 +31,15 @@ namespace CovidApps.model.Map
                  {
                   listerner.OnFailure("Unable to get location.Please turn on the location");
                   return;              
-                 }                                 
+                 }
 
-                 this.listerner.onGetCurrentLocationSuccess(locationInfo);      
+                LocationInfo locationInfo = await RefitQuery.getLocationFromCoordinates(location);
+                if(location==null)
+                {
+                    listerner.OnFailure("Error while fetching the information");
+                    return;
+                }
+                this.listerner.onGetCurrentLocationSuccess(locationInfo);      
              }
 
               catch (FeatureNotSupportedException fnsEx)         

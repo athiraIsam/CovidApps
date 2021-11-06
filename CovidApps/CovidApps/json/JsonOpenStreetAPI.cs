@@ -8,11 +8,11 @@ namespace CovidApps.json.openstreetmap
 {
     public class JsonOpenStreetAPI
     {
-        [JsonProperty("osm_type")]
-        public string osmType { get; set; }
+        [JsonProperty("display_name")]
+        public string displayName { get; set; }
 
-        [JsonProperty("licence")]
-        public string license { get; set; }
+        [JsonProperty("address")]
+        public JsonAddress address { get; set; }
 
     }
 }

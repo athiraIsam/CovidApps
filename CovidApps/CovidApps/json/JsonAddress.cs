@@ -9,5 +9,6 @@ namespace CovidApps.api.openstreetmap
     {
         [JsonProperty("country")]
         public string country { get; set; }
+
     }
 }

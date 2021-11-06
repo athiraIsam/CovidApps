@@ -10,8 +10,8 @@ namespace CovidApps.api.openstreetmap
         "(KHTML, like Gecko) Chrome/95.0.4638.50 Mobile Safari/537.36")]
     public interface OpenStreetMapAPIServices
     {
-        [Get("/reverse?format=json&lat=3.1390&lon=101.6869")]
-        Task<json.openstreetmap.JsonOpenStreetAPI> GetLocationInfo();
+        [Get("/reverse?format=json&lat={lat}&lon={lon}")]
+        Task<json.openstreetmap.JsonOpenStreetAPI> GetLocationInfo([AliasAs("lat")] string latitude,[AliasAs("lon")] string longitude);
 
     }
 }

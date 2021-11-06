@@ -55,30 +55,12 @@ namespace CovidApps.model.Dashboard
         {
             try
             {
-                var handler = new HttpClientHandler
+                LocationInfo locationInfo = await RefitQuery.getLocationFromCoordinates(location);
+                if (location == null)
                 {
-                    ServerCertificateCustomValidationCallback = (message, cert, chain, sslErrors) => true
-                };
-                var httpClient = new HttpClient(handler)
-                {
-                    BaseAddress = new Uri("https://nominatim.openstreetmap.org")
-                };
-
-                var restAdapter = RestService.For<OpenStreetMapAPIServices>(httpClient);
-
-                var response = await restAdapter.GetLocationInfo();
-
-                if (response == null)
-                {
-                    onListerner.OnFailure("Error while fecthing the information");
-                     return; 
+                    onListerner.OnFailure("Error while fetching the information");
+                    return;
                 }
-
-                // Todo- Implement real value. for now unable to get respond. dont know why
-                LocationInfo locationInfo = new LocationInfo()
-                {
-                    countryName = "Malaysia"
-                };
 
                 getCovidRecord(locationInfo);
             }
@@ -89,6 +71,7 @@ namespace CovidApps.model.Dashboard
         }
         private async void getCovidRecord(LocationInfo locationInfo)
         {
+            try { 
             DayOfWeek weekStart = DayOfWeek.Sunday;
             DateTime startingDate = DateTime.Today;
 
@@ -98,25 +81,14 @@ namespace CovidApps.model.Dashboard
             string previousWeekStart = startingDate.AddDays(-7).ToString("yyyy-MM-dd");
             string previousWeekEnd = startingDate.AddDays(-1).ToString("yyyy-MM-dd");
 
-            try
-            {
-                var handler = new HttpClientHandler
-                {
-                    ServerCertificateCustomValidationCallback = (message, cert, chain, sslErrors) => true
-                };
+            records = await RefitQuery.getCovidRecord(locationInfo.countryName, previousWeekStart, previousWeekEnd);
                 
-                var httpClient = new HttpClient(handler) { BaseAddress = new Uri("https://api.covid19api.com") };
-
-                var restAdapter = RestService.For<CovidAPIServices>(httpClient);
-                
-                var response = await restAdapter.GetCovidRecord(locationInfo.countryName, previousWeekStart, previousWeekEnd);
-                
-                if(response==null)
+                if(records == null)
                 {
                     onListerner.OnFailure("Error while fecthing the information");
                     return;
                 }
-                onListerner.OnGetRecordSuccess(response);
+                onListerner.OnGetRecordSuccess(records);
             }
             catch (Exception e) 
             { 
